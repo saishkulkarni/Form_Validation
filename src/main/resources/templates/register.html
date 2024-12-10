@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Registration Form</h1>
+        <h3 th:text="${success}"></h3>
+        <form action="/register" method="post" th:object="${student}">
+            Name: <input type="text" name="name" th:field="*{name}">
+                <span th:errors="*{name}"></span>
+            <br><br>
+            Email: <input type="text" name="email" th:field="*{email}">
+            <span th:errors="*{email}"></span>
+            <br><br>
+            Password: <input type="text" name="password" th:field="*{password}" >
+            <span th:errors="*{password}"></span>
+            <br><br>
+            Confirm Password: <input type="text" th:field="*{confirmPassword}"  name="confirmPassword" >
+            <span th:errors="*{confirmPassword}"></span>
+            <br><br>
+            <button>Register</button>
+        </form>
+    </div>
+</body>
+</html>
