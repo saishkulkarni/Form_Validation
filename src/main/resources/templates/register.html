@@ -4,24 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        h3 {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: left;
+            padding: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 0;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            font-size: 16px;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+        button {
+            background: linear-gradient(to right, #4299e1, #667eea);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        span {
+            color: #e53e3e;
+            font-size: 14px;
+            display: block;
+            margin-top: 6px;
+        }
+    </style>
 </head>
 <body>
-    <div align="center">
+    <div class="container">
         <h1>Registration Form</h1>
         <h3 th:text="${success}"></h3>
         <form action="/register" method="post" th:object="${student}">
-            Name: <input type="text" name="name" th:field="*{name}">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name" th:field="*{name}" placeholder="Enter your name">
                 <span th:errors="*{name}"></span>
-            <br><br>
-            Email: <input type="text" name="email" th:field="*{email}">
-            <span th:errors="*{email}"></span>
-            <br><br>
-            Password: <input type="text" name="password" th:field="*{password}" >
-            <span th:errors="*{password}"></span>
-            <br><br>
-            Confirm Password: <input type="text" th:field="*{confirmPassword}"  name="confirmPassword" >
-            <span th:errors="*{confirmPassword}"></span>
-            <br><br>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" name="email" th:field="*{email}" placeholder="Enter your email">
+                <span th:errors="*{email}"></span>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="text" name="password" th:field="*{password}" placeholder="Enter your password">
+                <span th:errors="*{password}"></span>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="text" th:field="*{confirmPassword}" name="confirmPassword" placeholder="Confirm your password">
+                <span th:errors="*{confirmPassword}"></span>
+            </div>
             <button>Register</button>
         </form>
     </div>
