@@ -29,7 +29,9 @@ public class MailHelper {
         context.setVariable("student", student);
 
         String text=engine.process("email-template.html", context);
+       
         helper.setText(text,true);
+        
         helper.setSubject("Registration Successful");
         helper.setTo(student.getEmail());
         }catch(Exception e) {
